@@ -8,7 +8,19 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <string.h>
+# include <mlx.h>
+# include <math.h>
+# define pi M_PI
 # define BUFFER_SIZE 10
+
+typedef struct s_player
+{
+    double x_pos;
+    double y_pos;
+    double x_dir;
+    double y_dir;
+    double fov;
+}   t_player;
 
 typedef struct s_line
 {
@@ -24,20 +36,23 @@ typedef struct s_line
 
 typedef struct s_data
 {
-    char **map;
-    t_line order;
-    char *NO;
-    char *WE;
-    char *EA;
-    char *SO;
-    int floor_color[3];
-    int ceiling_color[3];
-    int map_width;
-    int map_lenght;
-    int x_player;
-    int y_player;
-    char direction;
-    int end_map;
+     t_player   player;
+    void        *mlx_ptr;
+    void        *mlx_win;
+    char        **map;
+    t_line      order;
+    char        *NO;
+    char        *WE;
+    char        *EA;
+    char        *SO;
+    int         floor_color[3];
+    int         ceiling_color[3];
+    int         map_width;
+    int         map_lenght;
+    int         x_player;
+    int         y_player;
+    char        direction;
+    int         end_map;
 } t_data;
 
 typedef struct s_coll

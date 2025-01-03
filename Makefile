@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -Imlx
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
-SRCS = mandatory/cub3d.c mandatory/gnl_ut.c mandatory/gnl.c mandatory/main.c mandatory/parse.c mandatory/utiles.c mandatory/parse_colors.c mandatory/parse_textures.c mandatory/valid_map.c mandatory/allocate_free.c
+SRCS = mandatory/cub3d.c mandatory/gnl_ut.c mandatory/gnl.c mandatory/main.c mandatory/parse.c mandatory/utiles.c mandatory/parse_colors.c mandatory/parse_textures.c mandatory/valid_map.c mandatory/allocate_free.c mandatory/raycasting.c
 
 HEADS = mandatory/cub3d.h
 

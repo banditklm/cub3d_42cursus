@@ -1,5 +1,5 @@
 #ifndef CUB_H
-# define CUB_H
+#define CUB_H
 
 
 #include <stdio.h>
@@ -88,4 +88,5 @@ int	composition_checker(t_data *data, int i, int j);
 char *extract_content(char *line);
 int	ft_isdigit(int c);
 void	*c_malloc(size_t size, int flag);
+
 #endif

@@ -39,6 +39,7 @@ typedef struct s_data
      t_player   player;
     void        *mlx_ptr;
     void        *mlx_win;
+    int         screen_width;
     char        **map;
     t_line      order;
     char        *NO;

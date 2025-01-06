@@ -38,6 +38,15 @@ void	init_player(t_data *data)
 	}
 	data->player.fov = pi / 3;
 }
+
+void	init_data(t_data *data, int width)
+{
+	data->screen_width = width;
+}
+
+
+
+
 // plane width = tan(fov / 2)
 // plane_x and plane_y :
 // plane_x = dir_y * tan(fov / 2)

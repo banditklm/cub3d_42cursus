@@ -18,9 +18,35 @@ void    raycast(t_data *data)
         ray_angle = start_angle + i * segment;
         raydir_x = cos(ray_angle);
         raydir_y = sin(ray_angle);
-        trace_ray();
+        raytrace();
         i++;
     }
 }
 
+void    raytrace(t_data *data, double x_pos, double y_pos, double raydir_x, double raydir_y)
+{
+    double  delta_x;
+    double  delta_y;
+    double  side_x;
+    double  side_y;
+    int     step_x;
+    int     step_y;
 
+    // delta_x = 1 / raydir_x;
+    // delta_y = 1 / raydir_y;
+    // if (raydir_x > 0)
+    //     step_x = 1;
+    // else if (raydir_x < 0)
+    //     step_x = -1;
+    // if (raydir_y > 0)
+    //     step_y = 1;
+    // else if (raydir_y < 0)
+    //     step_y = -1;
+    while(data->map[i][j])
+    {
+        //DDA_Algo
+        i++;
+        j++;
+    }
+
+}

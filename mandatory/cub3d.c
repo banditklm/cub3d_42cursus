@@ -16,8 +16,10 @@ int main()
 {
     t_data  data;
 
+    data.screen_width = data.map_width * 60;
+    data.screen_height = data.map_lenght * 60;
     data.mlx_ptr = mlx_init();
-    data.mlx_win = mlx_new_window(data.mlx_ptr, 1000, 1000, "cub3d");
+    data.mlx_win = mlx_new_window(data.mlx_ptr, data.screen_width, data.screen_height, "cub3d");
     
 	mlx_loop(data.mlx_ptr);
 }

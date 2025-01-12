@@ -40,6 +40,7 @@ typedef struct s_data
     void        *mlx_ptr;
     void        *mlx_win;
     int         screen_width;
+    int         screen_height;
     char        **map;
     t_line      order;
     char        *NO;

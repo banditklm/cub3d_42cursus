@@ -15,11 +15,13 @@
 
 typedef struct s_player
 {
-    double x_pos;
-    double y_pos;
-    double x_dir;
-    double y_dir;
-    double fov;
+    double  x_pos;
+    double  y_pos;
+    double  x_dir;
+    double  y_dir;
+    double  plane_x;
+    double  plane_y;
+    double  fov;
 }   t_player;
 
 typedef struct s_line

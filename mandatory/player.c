@@ -43,6 +43,7 @@ void	init_data(t_data *data, int width)
 {
 	data.screen_width = data.map_width * 60;
     data.screen_height = data.map_lenght * 60;
+	data->player.fov = pi / 3;
 }
 
 

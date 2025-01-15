@@ -3,43 +3,48 @@
 void    raycast(t_data *data)
 {
     double   camera_x;
-    double   ray_x;
-    double   ray_y;
+    // double   ray_x;
+    // double   ray_y;
     int      i;
 
-    data->player.plane_x = 
+    data->player.plane_x = -data->player.dir_y * tan(data->fov / 2);
+    data->player.plane_y = data->player.dir_x * tan(data->fov / 2);
     while (i < data->screen_width)
     {
         camera_x = 2 * i / double(data->screen_width) - 1;
+        data->ray.rayd_x = data->player.dir_x + data->player.plane_x * camera_x;
+        data->ray.rayd_y = data->player.dir_y + data->player.plane_y * camera_x;
+        init_dist();
     }
+}
+
+void    init_dist(t_data *data)
+{
+    int     map_x;
+    int     map_y;
+    // double  delta_x;
+    // double  delta_y;
+    // double  side_x;
+    // double  side_y;
+
+    map_x = (int)data->player.x_pos;
+    map_y = (int)data->player.y_pos;
+    if (data->ray.rayd_x == 0)
+        data->ray.delta_x = inf;
+    else
+        data->ray.delta_x = fabs(1 / ray_x);
+    if (data->ray.rayd_y == 0)
+        data->ray.delta_y = inf;
+    else
+        data->ray.delta_y = fabs(1 / ray_y);
+
 }
 
 void    raytrace(t_data *data, double x_pos, double y_pos, double raydir_x, double raydir_y)
 {
-    double  delta_x;
-    double  delta_y;
-    double  side_x;
-    double  side_y;
     int     step_x;
     int     step_y;
-
-    // delta_x = 1 / raydir_x;
-    // delta_y = 1 / raydir_y;
-    // if (raydir_x > 0)
-    //     step_x = 1;
-    // else if (raydir_x < 0)
-    //     step_x = -1;
-    // if (raydir_y > 0)
-    //     step_y = 1;
-    // else if (raydir_y < 0)
-    //     step_y = -1;
-    while(data->map[i][j])
-    {
-        //DDA_Algo
-        i++;
-        j++;
-    }
-
+    
 }
 
 

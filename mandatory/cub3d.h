@@ -2,15 +2,17 @@
 #define CUB_H
 
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <limits.h>
-#include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <limits.h>
+# include <string.h>
 # include <mlx.h>
 # include <math.h>
+# include <stdbool.h>
 # define pi M_PI
+# define inf INFINITY
 # define BUFFER_SIZE 10
 
 typedef struct s_player
@@ -23,6 +25,18 @@ typedef struct s_player
     double  plane_y;
     double  fov;
 }   t_player;
+
+typedef struct s_ray
+{
+    double  rayd_x;
+    double  rayd_y;
+    double  delta_x;
+    double  delta_y;
+    double  side_x;
+    double  side_y;
+    bool    hit_wall;
+    int     side_wall; // 0 : x_side , 1 : y_side
+}   t_ray;
 
 typedef struct s_line
 {
@@ -43,6 +57,8 @@ typedef struct s_data
     void        *mlx_win;
     int         screen_width;
     int         screen_height;
+    double      fov;
+    t_ray       ray;
     char        **map;
     t_line      order;
     char        *NO;

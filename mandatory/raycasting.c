@@ -22,10 +22,6 @@ void    init_dist(t_data *data)
 {
     int     map_x;
     int     map_y;
-    // double  delta_x;
-    // double  delta_y;
-    // double  side_x;
-    // double  side_y;
 
     map_x = (int)data->player.x_pos;
     map_y = (int)data->player.y_pos;
@@ -37,14 +33,40 @@ void    init_dist(t_data *data)
         data->ray.delta_y = inf;
     else
         data->ray.delta_y = fabs(1 / ray_y);
-
+    if (data->ray.rayd_x < 0)
+    {
+        data->ray.step_x = -1;
+        data->ray.side_x = (data->player.x_pos - map_x) * data->ray.delta_x;
+    }
+    else
+    {
+        data->ray.step_x = 1;
+        data->ray.side_x = (map_x + 1 - data->player.x_pos) * data->ray.delta_x;
+    }
+    if (data->ray.rayd_y < 0)
+    {
+        data->ray.step_y = -1;
+        data->ray.side_y = (data->player.y_pos - map_y) * data->ray.delta_y;
+    }
+    else
+    {
+        data->ray.step_y = 1;
+        data->ray.side_y = (map_y + 1 - data->player.y_pos) * data->ray.delta_y;
+    }
+    raytrace(data, map_x, map_y);
 }
 
-void    raytrace(t_data *data, double x_pos, double y_pos, double raydir_x, double raydir_y)
+void    raytrace(t_data *data)
 {
     int     step_x;
     int     step_y;
-    
+    bool    hit_wall;
+
+    hit_wall = 0;
+    while (hit_wall == 0)
+    {
+
+    }
 }
 
 

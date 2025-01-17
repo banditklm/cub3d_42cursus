@@ -34,7 +34,9 @@ typedef struct s_ray
     double  delta_y;
     double  side_x;
     double  side_y;
-    bool    hit_wall;
+    int     setp_x;
+    int     setp_y;
+    // bool    hit_wall;
     int     side_wall; // 0 : x_side , 1 : y_side
 }   t_ray;
 

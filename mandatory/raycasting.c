@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:32:41 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/01/23 10:49:41 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/01/23 19:07:38 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void    init_dist(t_data *data)
 void    raytrace(t_data *data, int map_x, int map_y)
 {
     bool    hit_wall;
+    double  perpWallDist;
 
     hit_wall = 0;
     while (hit_wall == 0)
@@ -88,6 +89,10 @@ void    raytrace(t_data *data, int map_x, int map_y)
         if (data->map[map_x][map_y] > 0)
             hit_wall = 1;
     }
+    if (data->ray.side_wall == 0)
+        perpWallDist = data->ray.side_x - data->ray.delta_x;
+    else
+        perpWallDist = data->ray.side_y - data->ray.delta_y;
 }
 
 

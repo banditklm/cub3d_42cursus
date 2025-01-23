@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 10:36:18 by kelmounj          #+#    #+#             */
-/*   Updated: 2024/12/30 15:15:48 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/01/22 19:08:10 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	init_player(t_data *data)
 
 void	init_data(t_data *data, int width)
 {
-	data.screen_width = data.map_width * 60;
-    data.screen_height = data.map_lenght * 60;
+	data->screen_width = data->map_width * 60;
+    data->screen_height = data->map_lenght * 60;
 	data->player.fov = pi / 3;
 }
 

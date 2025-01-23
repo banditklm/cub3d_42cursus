@@ -1,20 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 10:32:41 by kelmounj          #+#    #+#             */
+/*   Updated: 2025/01/23 10:49:41 by kelmounj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void    raycast(t_data *data)
 {
     double   camera_x;
-    // double   ray_x;
-    // double   ray_y;
     int      i;
 
-    data->player.plane_x = -data->player.dir_y * tan(data->fov / 2);
-    data->player.plane_y = data->player.dir_x * tan(data->fov / 2);
+    data->player.plane_x = -data->player.y_dir * tan(data->fov / 2);
+    data->player.plane_y = data->player.x_dir * tan(data->fov / 2);
     while (i < data->screen_width)
     {
-        camera_x = 2 * i / double(data->screen_width) - 1;
-        data->ray.rayd_x = data->player.dir_x + data->player.plane_x * camera_x;
-        data->ray.rayd_y = data->player.dir_y + data->player.plane_y * camera_x;
-        init_dist();
+        camera_x = 2 * i / data->screen_width - 1; // may cast to double
+        data->ray.rayd_x = data->player.x_dir + data->player.plane_x * camera_x;
+        data->ray.rayd_y = data->player.y_dir  + data->player.plane_y * camera_x;
+        // init_dist();
     }
 }
 
@@ -28,11 +38,11 @@ void    init_dist(t_data *data)
     if (data->ray.rayd_x == 0)
         data->ray.delta_x = inf;
     else
-        data->ray.delta_x = fabs(1 / ray_x);
+        data->ray.delta_x = fabs(1 / data->ray.rayd_x);
     if (data->ray.rayd_y == 0)
         data->ray.delta_y = inf;
     else
-        data->ray.delta_y = fabs(1 / ray_y);
+        data->ray.delta_y = fabs(1 / data->ray.rayd_y);
     if (data->ray.rayd_x < 0)
     {
         data->ray.step_x = -1;
@@ -56,16 +66,27 @@ void    init_dist(t_data *data)
     raytrace(data, map_x, map_y);
 }
 
-void    raytrace(t_data *data)
+void    raytrace(t_data *data, int map_x, int map_y)
 {
-    int     step_x;
-    int     step_y;
     bool    hit_wall;
 
     hit_wall = 0;
     while (hit_wall == 0)
     {
-
+        if (data->ray.side_x < data->ray.side_y)
+        {
+            data->ray.side_x += data->ray.delta_x;
+            map_x += data->ray.step_x;
+            data->ray.side_wall = 0;
+        }
+        else
+        {
+            data->ray.side_y += data->ray.delta_y;
+            map_y += data->ray.step_y;
+            data->ray.side_wall = 1;
+        }
+        if (data->map[map_x][map_y] > 0)
+            hit_wall = 1;
     }
 }
 

@@ -119,5 +119,7 @@ void parse(t_data *file_data, char *file_name)
 		ft_error('m');
 	if (!composition_checker(file_data, 0, 0))
 		ft_error('m');
+	map_lenght(file_data);
+	map_width(file_data);
 	
 }

@@ -210,3 +210,29 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	}
 	return (dest);
 }
+
+void map_lenght(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (data->map && data->map[i])
+		i++;
+	data->map_lenght = i;
+}
+
+void map_width(t_data *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (data->map && data->map[i])
+	{	
+		if (ft_strlen(data->map[i]) > j)
+			j = ft_strlen(data->map[i]);
+		i++;
+	}
+	data->map_width = j;
+}

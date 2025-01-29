@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:46:45 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/01/26 11:04:36 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/01/29 01:55:34 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define pi M_PI
 # define inf INFINITY
 # define BUFFER_SIZE 10
+# define TILE_SIZE 64
+
 
 typedef struct s_player
 {
@@ -122,6 +124,8 @@ int	composition_checker(t_data *data, int i, int j);
 char *extract_content(char *line);
 int	ft_isdigit(int c);
 void	*c_malloc(size_t size, int flag);
+void map_lenght(t_data *data);
+void map_width(t_data *data);
 //
 void	init_data(t_data *data);
 void	init_player(t_data *data);

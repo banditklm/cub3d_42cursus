@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 10:36:18 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/01/22 19:08:10 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:16:43 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,21 @@ void	init_player(t_data *data)
 	data->player.fov = pi / 3;
 }
 
-void	init_data(t_data *data, int width)
+void	init_data(t_data *data)
 {
-	data->screen_width = data->map_width * 60;
-    data->screen_height = data->map_lenght * 60;
+	char *map[] = {
+    "111111",
+    "100001",
+    "100P01",
+    "100001",
+    "111111",
+    NULL
+	};
+	data->map = map;
+	data->screen_width = 6 * 60;
+    data->screen_height = 6 * 60;
+	// data->screen_width = data->map_width * 60;
+    // data->screen_height = data->map_lenght * 60;
 	data->player.fov = pi / 3;
 }
 

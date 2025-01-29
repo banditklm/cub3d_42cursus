@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "cub3d.h"
 
 void set_texture(t_data *data, char *line)
 {

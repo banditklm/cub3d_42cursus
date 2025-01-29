@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "cub3d.h"
 
 int check_content(char *colors)
 {

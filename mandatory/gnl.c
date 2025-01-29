@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "cub3d.h"
 
 char	*ft_rest(char *save)
 {

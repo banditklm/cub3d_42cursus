@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "cub3d.h"
 int check_order(t_data *data)
 {
 	if (data->order.map_line < data->order.C_line

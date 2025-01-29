@@ -1,5 +1,17 @@
-#ifndef CUB_H
-#define CUB_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/26 10:46:45 by kelmounj          #+#    #+#             */
+/*   Updated: 2025/01/26 11:04:36 by kelmounj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3D_H
+#define CUB3D_H
 
 
 # include <stdio.h>
@@ -110,5 +122,9 @@ int	composition_checker(t_data *data, int i, int j);
 char *extract_content(char *line);
 int	ft_isdigit(int c);
 void	*c_malloc(size_t size, int flag);
+//
+void	init_data(t_data *data);
+void	init_player(t_data *data);
+void check_file_ext(char *str);
 
 #endif

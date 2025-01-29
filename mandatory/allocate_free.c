@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "cub3d.h"
 
 t_coll	*ft_collnew(void *value)
 {

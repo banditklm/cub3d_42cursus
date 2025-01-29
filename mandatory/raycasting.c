@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:32:41 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/01/26 10:31:04 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/01/29 01:23:29 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void    raycast(t_data *data)
     double   camera_x;
     int      i;
 
+    i = 0;
     data->player.plane_x = -data->player.y_dir * tan(data->fov / 2);
     data->player.plane_y = data->player.x_dir * tan(data->fov / 2);
     while (i < data->screen_width)
@@ -26,6 +27,35 @@ void    raycast(t_data *data)
         data->ray.rayd_y = data->player.y_dir  + data->player.plane_y * camera_x;
         // init_dist();
     }
+}
+
+void    raytrace(t_data *data, int map_x, int map_y)
+{
+    bool    hit_wall;
+    double  perpWallDist;
+
+    hit_wall = 0;
+    while (hit_wall == 0)
+    {
+        if (data->ray.side_x < data->ray.side_y)
+        {
+            data->ray.side_x += data->ray.delta_x;
+            map_x += data->ray.step_x;
+            data->ray.side_wall = 0;
+        }
+        else
+        {
+            data->ray.side_y += data->ray.delta_y;
+            map_y += data->ray.step_y;
+            data->ray.side_wall = 1;
+        }
+        if (data->map[map_x][map_y] > 0)
+            hit_wall = 1;
+    }
+    if (data->ray.side_wall == 0)
+        perpWallDist = data->ray.side_x - data->ray.delta_x;
+    else
+        perpWallDist = data->ray.side_y - data->ray.delta_y;
 }
 
 void    init_dist(t_data *data)
@@ -66,31 +96,17 @@ void    init_dist(t_data *data)
     raytrace(data, map_x, map_y);
 }
 
-void    raytrace(t_data *data, int map_x, int map_y)
+void    draw_line(t_data *data, double perpWallDist)
 {
-    bool    hit_wall;
-    double  perpWallDist;
-
-    hit_wall = 0;
-    while (hit_wall == 0)
-    {
-        if (data->ray.side_x < data->ray.side_y)
-        {
-            data->ray.side_x += data->ray.delta_x;
-            map_x += data->ray.step_x;
-            data->ray.side_wall = 0;
-        }
-        else
-        {
-            data->ray.side_y += data->ray.delta_y;
-            map_y += data->ray.step_y;
-            data->ray.side_wall = 1;
-        }
-        if (data->map[map_x][map_y] > 0)
-            hit_wall = 1;
-    }
-    if (data->ray.side_wall == 0)
-        perpWallDist = data->ray.side_x - data->ray.delta_x;
-    else
-        perpWallDist = data->ray.side_y - data->ray.delta_y;
+    int line_h;
+    int start_line;
+    int end_line;
+    
+    line_h = (int) (data->screen_height / perpWallDist);
+    start_line = -line_h / 2 + data->screen_height / 2;
+    if (start_line < 0)
+        start_line = 0;
+    end_line = line_h / 2 + data->screen_height / 2;
+    if (end_line >= data->screen_height)
+        end_line = data->screen_height - 1;
 }

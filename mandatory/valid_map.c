@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "cub3d.h"
 int skip_beg_spaces(char *row)
 {
 	int i = 0;

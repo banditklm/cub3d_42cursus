@@ -1,0 +1,28 @@
+   WE                            textures/wolfenstein/grey_stone.xpm
+NO      textures/wolfenstein/purple_stone.xpm
+
+
+
+SO textures/wolfenstein/red_brick.xpm
+
+F      17,    38,     64
+
+EA textures/wolfenstein/wood.xpm
+
+D textures/wolfenstein/door.xpm
+
+C 218, 234, 235
+
+   111     11   1111111
+ 1111 111111111111111111 
+1010110000100000000000001
+1000110000000000111111001
+10000D000S000000110001001
+10000D0000100000000001001
+ 11111111111111111111111 
+     1
+   1
+     1
+ 111
+111
+11

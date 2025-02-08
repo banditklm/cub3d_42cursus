@@ -2,11 +2,11 @@ NAME = cub3d
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -Imlx
+CFLAGS = -Wall -Wextra -Werror -Imlx -g -fsanitize=address
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
-SRCS = mandatory/cub3d.c mandatory/gnl_ut.c mandatory/gnl.c mandatory/main.c mandatory/parse.c mandatory/utiles.c mandatory/parse_colors.c mandatory/parse_textures.c mandatory/valid_map.c mandatory/allocate_free.c mandatory/raycasting.c mandatory/player.c
+SRCS = mandatory/cub3d.c mandatory/gnl_ut.c mandatory/gnl.c mandatory/main.c mandatory/parse.c mandatory/utiles.c mandatory/parse_colors.c mandatory/parse_textures.c mandatory/valid_map.c mandatory/allocate_free.c mandatory/raycasting.c mandatory/player.c mandatory/moves.c
 
 HEADS = mandatory/cub3d.h
 

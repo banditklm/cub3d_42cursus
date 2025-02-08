@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:46:45 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/05 12:49:41 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/08 15:38:24 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <stdbool.h>
+#include  <sys/time.h>
 # define pi M_PI
 # define inf INFINITY
 # define BUFFER_SIZE 10
@@ -145,5 +146,6 @@ void	init_data(t_data *data);
 void	init_player(t_data *data);
 void    raycast(t_data *data);
 void    init_dist(t_data *data, int x);
+int     move(int key_code, t_data *data);
 
 #endif

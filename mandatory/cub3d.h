@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:46:45 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/01/29 01:55:34 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:49:41 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define pi M_PI
 # define inf INFINITY
 # define BUFFER_SIZE 10
-# define TILE_SIZE 64
+# define CELL_SIZE 64
 
 
 typedef struct s_player
@@ -51,8 +51,17 @@ typedef struct s_ray
     int     step_x;
     int     step_y;
     // bool    hit_wall;
-    int     side_wall; // 0 : x_side , 1 : y_side
+    // int     side_wall; // 0 : x_side , 1 : y_side
 }   t_ray;
+
+typedef struct s_image
+{
+    void        *img;
+    int         bits_per_pixel;
+    int         size_line;
+    int         endian;
+    char        *buffer;
+}   t_img;
 
 typedef struct s_line
 {
@@ -75,6 +84,10 @@ typedef struct s_data
     int         screen_height;
     double      fov;
     t_ray       ray;
+    double      pwd;
+    int         pixel_x;
+    int         pixel_y;
+    t_img       img;
     char        **map;
     t_line      order;
     char        *NO;
@@ -126,9 +139,11 @@ int	ft_isdigit(int c);
 void	*c_malloc(size_t size, int flag);
 void map_lenght(t_data *data);
 void map_width(t_data *data);
+void check_file_ext(char *str);
 //
 void	init_data(t_data *data);
 void	init_player(t_data *data);
-void check_file_ext(char *str);
+void    raycast(t_data *data);
+void    init_dist(t_data *data, int x);
 
 #endif

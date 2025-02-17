@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:46:45 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/08 15:38:24 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:21:43 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define pi M_PI
 # define inf INFINITY
 # define BUFFER_SIZE 10
-# define CELL_SIZE 64
+# define CELL_SIZE 16
 
 
 typedef struct s_player
@@ -147,5 +147,8 @@ void	init_player(t_data *data);
 void    raycast(t_data *data);
 void    init_dist(t_data *data, int x);
 int     move(int key_code, t_data *data);
+void put_pixel_to_image(t_data *data, int x, int y, int color);
+int render_minimap(t_data *data);
+int render_frame(t_data *data);
 
 #endif

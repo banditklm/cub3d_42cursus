@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:32:41 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/08 13:10:34 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:56:19 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void    raycast(t_data *data)
     int      i;
 
     i = 0;
-    data->player.plane_x = 0;
-    data->player.plane_y = 0.66;
     while (i < data->screen_width)
     {
         camera_x = 2 * i / (double)data->screen_width - 1;
@@ -47,19 +45,21 @@ void draw_ceiling(t_data *data,int start_line, int x, int color)
     while (y < start_line)
     {
         int offset = (y * data->img.size_line) + (x * (data->img.bits_per_pixel / 8));
-        *(unsigned int *)(data->img.buffer + offset) = color;   
+        *(unsigned int *)(data->img.buffer + offset) = color;
         y++;
     }
 }
 void draw_floor(t_data *data,int end_line, int x, int color)
 {
     int y;
-    
+
     y = end_line + 1;
     while (y < data->screen_height)
     {
         int offset = (y * data->img.size_line) + (x * (data->img.bits_per_pixel / 8));
-        *(unsigned int *)(data->img.buffer + offset) = color;   
+        if (offset >= (data->img.size_line * data->screen_height))
+            return;
+        *(unsigned int *)(data->img.buffer + offset) = color;
         y++;
     }
 }
@@ -71,7 +71,7 @@ void draw_line(t_data *data, double perpWallDist, int x)
     int end_line;
     int color;
     int i;
-    
+
     line_h = (int)(data->screen_height / perpWallDist);
     start_line = -line_h / 2 + data->screen_height / 2;
     if (start_line < 0)
@@ -81,7 +81,7 @@ void draw_line(t_data *data, double perpWallDist, int x)
         end_line = data->screen_height - 1;
     draw_ceiling(data, start_line, x, 0x87CEEB);
     draw_floor(data, end_line, x, 0x228B22);
-    color = 0xFF0000;
+    color = 0xC5A5AD;
     i = start_line;
     while (i <= end_line)
     {
@@ -97,6 +97,7 @@ void    raytrace(t_data *data, int map_x, int map_y, int x)
     int     side_wall;
 
     hit_wall = 0;
+    side_wall = -1;
     perpWallDist = 0.0;
     while (hit_wall == 0)
     {
@@ -112,19 +113,19 @@ void    raytrace(t_data *data, int map_x, int map_y, int x)
             map_y += data->ray.step_y;
             side_wall = 1;
         }
-        if (data->map[map_x][map_y] == '1')
+        if (map_x < 0 || map_x >= data->map_width || map_y < 0 || map_y >= data->map_lenght)
+        {
+            hit_wall = 1;
+            break;
+        }
+        if (data->map[map_y][map_x] != '0')
             hit_wall = 1;
     }
     if (side_wall == 0)
-    {
         perpWallDist = data->ray.side_x - data->ray.delta_x;
-    }
-    else if (side_wall == 1)
-    {
+    else
         perpWallDist = (data->ray.side_y) - (data->ray.delta_y);
-    }
     draw_line(data,perpWallDist, x);
-    data->pwd = perpWallDist;
 }
 
 void    init_dist(t_data *data, int x)

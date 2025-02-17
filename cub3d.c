@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 10:32:48 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/17 14:10:44 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:12:26 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,4 +136,3 @@ int main(int ac, char **av)
     mlx_loop_hook(data.mlx_ptr, render_frame, &data);
 	mlx_loop(data.mlx_ptr);
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     

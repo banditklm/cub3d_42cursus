@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:46:45 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/12 11:21:43 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:19:05 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <stdbool.h>
-#include  <sys/time.h>
+# include  <sys/time.h>
 # define pi M_PI
 # define inf INFINITY
 # define BUFFER_SIZE 10

@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:02:53 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/17 14:16:56 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:30:31 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int move_to(int key_code, t_data *data, double move_speed, double rot_speed)
 	{
 		move_up(data, move_speed);
 	}
-	if (key_code == 1 || key_code == 125)
+	if (key_code == 1)
 	{
 		move_down(data, move_speed);
 	}

@@ -134,8 +134,8 @@ int	composition_checker(t_data *data, int i, int j)
 				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
 				{
 					p_counter++;
-					data->x_player = i;
-					data->y_player = j;
+					data->x_player = j;
+					data->y_player = i;
 					data->direction = data->map[i][j];
 				}
 			j++;

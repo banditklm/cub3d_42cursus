@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:32:41 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/17 15:52:46 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:15:07 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void draw_line(t_data *data, double perpWallDist, int x)
     end_line = line_h / 2 + data->screen_height / 2;
     if (end_line >= data->screen_height)
         end_line = data->screen_height - 1;
-    draw_ceiling(data, start_line, x, 0x87CEEB);
+    draw_ceiling(data, start_line, x, 0x000000);
     draw_floor(data, end_line, x, 0x228B22);
     color = 0xC5A5AD;
     i = start_line;
@@ -116,15 +116,16 @@ void    raytrace(t_data *data, int map_x, int map_y, int x)
         if (map_x < 0 || map_x >= data->map_width || map_y < 0 || map_y >= data->map_lenght)
         {
             hit_wall = 1;
-            break;
+            return;
         }
-        if (data->map[map_y][map_x] != '0')
+        if (data->map[map_y][map_x] != '0' && data->map[map_y][map_x] != 'N' && data->map[map_y][map_x] != 'E' && data->map[map_y][map_x] != 'W' && data->map[map_y][map_x] != 'S')
             hit_wall = 1;
     }
     if (side_wall == 0)
         perpWallDist = data->ray.side_x - data->ray.delta_x;
     else
         perpWallDist = (data->ray.side_y) - (data->ray.delta_y);
+    // printf("position of the player:  (y_pos : %f, x_pos : %f)\n", data->player.y_pos, data->player.x_pos);
     draw_line(data,perpWallDist, x);
 }
 

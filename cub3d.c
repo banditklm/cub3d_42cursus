@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 10:32:48 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/17 16:12:26 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:45:12 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ int main(int ac, char **av)
     data.mlx_win = mlx_new_window(data.mlx_ptr, data.screen_width, data.screen_height, "cub3d");
     data.img.img = mlx_new_image(data.mlx_ptr, data.screen_width, data.screen_height);
     data.img.buffer = mlx_get_data_addr(data.img.img, &data.img.bits_per_pixel, &data.img.size_line, &data.img.endian);
+    mlx_hook(data.mlx_win, 17, 0, ft_destroy_win, &data);
 	mlx_hook(data.mlx_win, 2, 0, move, &data);
     mlx_loop_hook(data.mlx_ptr, render_frame, &data);
 	mlx_loop(data.mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:46:45 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/17 16:19:05 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:45:05 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,10 @@ void	init_player(t_data *data);
 void    raycast(t_data *data);
 void    init_dist(t_data *data, int x);
 int     move(int key_code, t_data *data);
-void put_pixel_to_image(t_data *data, int x, int y, int color);
-int render_minimap(t_data *data);
-int render_frame(t_data *data);
+void    put_pixel_to_image(t_data *data, int x, int y, int color);
+int     render_minimap(t_data *data);
+int     render_frame(t_data *data);
+int     ft_destroy_win(t_data *data);
+int     mouse_move(t_data *data);
 
 #endif

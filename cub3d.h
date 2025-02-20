@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:46:45 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/17 21:45:05 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:11:49 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,6 @@ void    put_pixel_to_image(t_data *data, int x, int y, int color);
 int     render_minimap(t_data *data);
 int     render_frame(t_data *data);
 int     ft_destroy_win(t_data *data);
-int     mouse_move(t_data *data);
+int     mouse_move(int x, int y, t_data *data);
 
 #endif

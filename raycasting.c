@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:32:41 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/17 21:15:07 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/19 19:12:51 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void    raytrace(t_data *data, int map_x, int map_y, int x)
             hit_wall = 1;
             return;
         }
-        if (data->map[map_y][map_x] != '0' && data->map[map_y][map_x] != 'N' && data->map[map_y][map_x] != 'E' && data->map[map_y][map_x] != 'W' && data->map[map_y][map_x] != 'S')
+        if (data->map[map_y][map_x] == '1')
             hit_wall = 1;
     }
     if (side_wall == 0)

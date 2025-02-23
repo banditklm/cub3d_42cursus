@@ -4,9 +4,8 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -Imlx -g -fsanitize=address
 
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
-
-MLX_ARCHIVE = .MLX42/build/libmlx42.a
+MLX_PATH = MLX42/build
+MLX_ARCHIVE = $(MLX_PATH)/libmlx42.a
 
 SRCS = mandatory/cub3d.c mandatory/gnl_ut.c mandatory/gnl.c mandatory/parse.c \
 mandatory/utiles.c mandatory/parse_colors.c mandatory/parse_textures.c mandatory/valid_map.c \
@@ -17,22 +16,23 @@ HEADS = mandatory/cub3d.h
 
 OBJS = $(SRCS:.c=.o)
 
-all : mlx $(NAME)
+all: mlx $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(MLX_ARCHIVE) -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" $^ -o $@
+$(NAME): $(MLX_ARCHIVE) $(OBJS)
+	$(CC) $(CFLAGS) $^ -Iinclude -L"/usr/lib/x86_64-linux-gnu/" -lglfw $(MLX_ARCHIVE) -lm -o $@
 
-$(OBJS) : %.o: %.c $(HEADS) Makefile
+%.o: %.c $(HEADS) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
-mlx :
+
+mlx:
 	@cd MLX42 && cmake -B build && cmake --build build -j4
 
-clean :
-	rm	-f $(OBJS) $(OBJSB)
+clean:
+	rm -f $(OBJS)
 
-fclean : clean
-	rm	-f $(NAME) $(BONUS)
+fclean: clean
+	rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
-.PHONY : clean
+.PHONY: all clean fclean re mlx

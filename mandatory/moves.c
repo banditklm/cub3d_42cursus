@@ -128,7 +128,7 @@ int move_to(int key_code, t_data *data, double move_speed, double rot_speed)
 	{
 		move_down(data, move_speed);
 	}
-    mlx_clear_window(data->mlx_ptr, data->mlx_win);
+    mlx_close_window(data->mlx_data);
     render_frame(data);
     render_minimap(data);
 	return (1);

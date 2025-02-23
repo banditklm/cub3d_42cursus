@@ -101,40 +101,82 @@ int render_minimap(t_data *data)
        i++;
     }
     put_player(data);
-    mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->img.img, 0, 0);
+    mlx_image_to_window(data->mlx_data, data->img.img, 0, 0);
     return (0);
 }
 
 int render_frame(t_data *data)
 {
     raycast(data);
-    mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->img.img, 0, 0);
+    mlx_image_to_window(data->mlx_data, data->img.img, 0, 0);
     render_minimap(data);
     return (0);
 }
 
 
+// int main(int ac, char **av)
+// {
+//     t_data  data;
+
+
+//     if (ac != 2)
+// 	{
+// 		printf("Error\nyou need 1 file , .cub file\n");
+// 		return (1);
+// 	}
+// 	check_file_ext(av[1]);
+// 	parse(&data, av[1]);
+//     init_data(&data);
+//     init_player(&data);
+//     data.mlx_data = mlx_init(data.screen_width, data.screen_height, "cub3d", true);
+//     mlx_set_window_pos(data.mlx_data, 0, 0);
+//     printf("here\n");
+//     // data.img.img = mlx_new_image(data.mlx_data, data.screen_width, data.screen_height);
+//     // data.img.buffer = mlx_get_data_addr(data.img.img, &data.img.bits_per_pixel, &data.img.size_line, &data.img.endian);
+//     // mlx_hook(data.mlx_win, 17, 0, ft_destroy_win, &data);
+// 	// mlx_hook(data.mlx_win, 2, 0, move, &data);
+//     // mlx_hook(data.mlx_win, 6, 0, mouse_move, &data);
+//     // mlx_loop_hook(data.mlx_ptr, render_frame, &data);
+// 	mlx_loop(data.mlx_data);
+// }
+
+
+    // printf("width: %d\t height: %d\n", data.screen_width, data.screen_height);
+
 int main(int ac, char **av)
 {
     t_data  data;
 
-
     if (ac != 2)
-	{
-		printf("Error\nyou need 1 file , .cub file\n");
-		return (1);
-	}
-	check_file_ext(av[1]);
-	parse(&data, av[1]);
+    {
+        printf("Error\nyou need 1 file, .cub file\n");
+        return (1);
+    }
+    check_file_ext(av[1]);
+    parse(&data, av[1]);
     init_data(&data);
     init_player(&data);
-    data.mlx_ptr = mlx_init();
-    data.mlx_win = mlx_new_window(data.mlx_ptr, data.screen_width, data.screen_height, "cub3d");
-    data.img.img = mlx_new_image(data.mlx_ptr, data.screen_width, data.screen_height);
-    data.img.buffer = mlx_get_data_addr(data.img.img, &data.img.bits_per_pixel, &data.img.size_line, &data.img.endian);
-    mlx_hook(data.mlx_win, 17, 0, ft_destroy_win, &data);
-	mlx_hook(data.mlx_win, 2, 0, move, &data);
-    // mlx_hook(data.mlx_win, 6, 0, mouse_move, &data);
-    mlx_loop_hook(data.mlx_ptr, render_frame, &data);
-	mlx_loop(data.mlx_ptr);
+
+    // Initialize the MLX context with width, height, and window title.
+    data.mlx_data = mlx_init(data.screen_width, data.screen_height, "cub3d", true);
+
+    // If MLX fails to initialize
+    if (!data.mlx_data)
+    {
+        printf("Error initializing MLX\n");
+        return (1);
+    }
+    printf("here\n");
+    // You can create images in MLX42 as follows:
+    mlx_image_t* img = mlx_new_image(data.mlx_data, data.screen_width, data.screen_height);
+    mlx_image_to_window(data.mlx_data, img, 0, 0);  // Display the image in the window
+
+    // Set up event hooks (e.g., key press, mouse movement, etc.)
+    // mlx_key_hook(data.mlx_data, move, &data);  // Replace key_press with your own handler
+    // mlx_resize_hook(data.mlx_data, resize_window, &data);  // Replace resize_window with your handler
+
+    // Start the MLX loop, it will handle window events and refresh
+    mlx_loop(data.mlx_data);
+
+    return (0);
 }

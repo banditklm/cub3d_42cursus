@@ -14,6 +14,7 @@
 
 int    ft_destroy_win(t_data *data)
 {
-    mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+    (void)data;
+    // mlx_destroy_cursor(data->mlx_ptr, data->mlx_win);
     exit (0);
 }

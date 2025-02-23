@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <string.h>
-# include <mlx.h>
+# include "../MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 # include <stdbool.h>
 # include  <sys/time.h>
@@ -79,8 +79,7 @@ typedef struct s_line
 typedef struct s_data
 {
     t_player   player;
-    void        *mlx_ptr;
-    void        *mlx_win;
+    mlx_t        *mlx_data;
     int         screen_width;
     int         screen_height;
     double      fov;

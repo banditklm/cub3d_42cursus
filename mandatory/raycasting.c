@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:32:41 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/19 19:12:51 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:23:27 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ void    raytrace(t_data *data, int map_x, int map_y, int x)
         perpWallDist = data->ray.side_x - data->ray.delta_x;
     else
         perpWallDist = (data->ray.side_y) - (data->ray.delta_y);
-    // printf("position of the player:  (y_pos : %f, x_pos : %f)\n", data->player.y_pos, data->player.x_pos);
     draw_line(data,perpWallDist, x);
 }
 

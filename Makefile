@@ -6,19 +6,26 @@ CFLAGS = -Wall -Wextra -Werror -Imlx -g -fsanitize=address
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
-SRCS = cub3d.c gnl_ut.c gnl.c main.c parse.c utiles.c parse_colors.c parse_textures.c valid_map.c allocate_free.c raycasting.c player.c moves.c window.c
+MLX_ARCHIVE = .MLX42/build/libmlx42.a
 
-HEADS = cub3d.h
+SRCS = mandatory/cub3d.c mandatory/gnl_ut.c mandatory/gnl.c mandatory/parse.c \
+mandatory/utiles.c mandatory/parse_colors.c mandatory/parse_textures.c mandatory/valid_map.c \
+mandatory/allocate_free.c mandatory/raycasting.c mandatory/player.c mandatory/moves.c \
+mandatory/window.c mandatory/initgame.c 
+
+HEADS = mandatory/cub3d.h
 
 OBJS = $(SRCS:.c=.o)
 
-all : $(NAME)
+all : mlx $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(MLXFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $(MLX_ARCHIVE) -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" $^ -o $@
 
 $(OBJS) : %.o: %.c $(HEADS) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
+mlx :
+	@cd MLX42 && cmake -B build && cmake --build build -j4
 
 clean :
 	rm	-f $(OBJS) $(OBJSB)

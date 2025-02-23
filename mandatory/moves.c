@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:02:53 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/19 19:00:25 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/02/23 10:33:51 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,33 +47,28 @@ int move_down(t_data *data, double move_speed)
 
 int move_right(t_data *data, double move_speed)
 {
-    int x_next;
-    int y_next;
+    double x_next = data->player.x_pos + data->player.plane_x * move_speed;
+    double y_next = data->player.y_pos + data->player.plane_y * move_speed;
 
-    x_next = (data->player.x_pos + data->player.plane_x * move_speed);
-    y_next = (data->player.y_pos + data->player.plane_y * move_speed);
-    if ((int)x_next >= 0 && (int)x_next < data->map_width && (int)y_next >= 0 &&
-        (int)y_next < data->map_lenght && data->map[(int)(y_next + 0.1)][(int)(x_next + 0.1)] != '1')
-    {
-        data->player.x_pos += data->player.plane_x * move_speed;
-        data->player.y_pos += data->player.plane_y * move_speed;
-    }
+    if (data->map[(int)data->player.y_pos][(int)x_next] != '1')
+        data->player.x_pos = x_next;
+    if (data->map[(int)y_next][(int)data->player.x_pos] != '1')
+        data->player.y_pos = y_next;
+
     return (1);
 }
 
+
 int move_left(t_data *data, double move_speed)
 {
-    int x_next;
-    int y_next;
+    double x_next = data->player.x_pos - data->player.plane_x * move_speed;
+    double y_next = data->player.y_pos - data->player.plane_y * move_speed;
 
-    x_next = (data->player.x_pos + data->player.plane_x * move_speed);
-    y_next = (data->player.y_pos + data->player.plane_y * move_speed);
-    if ((int)x_next >= 0 && (int)x_next < data->map_width && (int)y_next >= 0 &&
-        (int)y_next < data->map_lenght && data->map[(int)(y_next + 0.1)][(int)(x_next + 0.1)] != '1')
-    {
-        data->player.x_pos -= data->player.plane_x * move_speed;
-        data->player.y_pos -= data->player.plane_y * move_speed;
-    }
+    if (data->map[(int)data->player.y_pos][(int)x_next] != '1')
+        data->player.x_pos = x_next;
+    if (data->map[(int)y_next][(int)data->player.x_pos] != '1')
+        data->player.y_pos = y_next;
+
     return (1);
 }
 
@@ -178,19 +173,19 @@ size_t	get_tv(void)
 
 int move(int key_code, t_data *data)
 {
-    static long old_time = 0;
-    long current_time;
-    double  frame_time;
+    // static long old_time = 0;
+    // long current_time;
+    // double  frame_time;
     double  move_speed;
     double  rot_speed;
 
-    current_time = get_tv();
-    if (old_time == 0)
-        old_time = current_time;
-    frame_time = (current_time - old_time) / 1000.0;
-    old_time = current_time;
-    move_speed = frame_time * 2.0;
-    rot_speed = frame_time * 0.5;
+    // current_time = get_tv();
+    // if (old_time == 0)
+    //     old_time = current_time;
+    // frame_time = (current_time - old_time) / 1000.0;
+    // old_time = current_time;
+    move_speed = 0.2;
+    rot_speed = 0.05;
     move_to(key_code, data, move_speed, rot_speed);
     return (0);
 }

@@ -1,14 +1,14 @@
-# 🕹️ cub3D
+# 🎮 cub3D
 
 **cub3D** is a simple 3D game engine inspired by early raycasting games like Wolfenstein 3D, built as part of the 42 curriculum. It uses raycasting to render a 3D world from a 2D map.
 
-## 📁 Project Structure
+## Project Structure
 
 - `mandatory/` — Core implementation of the game
 - `bonus/` — Enhanced version with extra features (e.g. minimap, animations, mouse handling, sound, etc.)
 - `MLX42/` — The graphics library used (needs to be cloned from GitHub)
 
-## ⚙️ Dependencies
+## Dependencies
 
 This project uses the **MLX42** graphics library, which depends on **GLFW** and **CMake**.
 

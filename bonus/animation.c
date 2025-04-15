@@ -6,7 +6,7 @@
 /*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 02:40:03 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/04/15 22:31:16 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/04/15 23:38:09 by kelmounj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ void	check_end(t_data *data, int *frame)
 	if (data->is_animating)
 	{
 		(*frame)++;
-		if (*frame == 1)
-		{
-			play_s1("afplay bonus/hamas.m4a");
-		}
 		if (*frame >= 28)
 		{
 			*frame = 0;

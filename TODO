@@ -37,3 +37,28 @@ C 225,30,0
 test6:
 F 255,255,255
 C 225,30,0  6464
+
+
+try to use mlx_mouse_hook for some actions✅
+fix the minimap✅
+check norm of your files
+delete the useless function from the header
+set the static functions
+
+ 1
+1N1
+ 1
+
+
+C ,,,,,,,,,,,,,,,,,,,,,,12,4,,,,,,,,,,,,,,,,,,7,,,,,,,,,,,,,,,,,,,,,,,
+
+
+check the color of the door of the minimap
+
+
+C 8,0 1,12 1
+
+
+joined = ft_strdup(""); // protect if NULL
+
+protect the mlx functions

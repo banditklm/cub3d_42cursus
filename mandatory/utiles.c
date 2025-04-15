@@ -1,84 +1,17 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utiles.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cbajji <cbajji@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/07 15:45:32 by cbajji            #+#    #+#             */
+/*   Updated: 2025/04/07 15:55:00 by cbajji           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_strlen(char *s)
-{
-	int	len;
+#include "cub.h"
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	int		i;
-	int		j;
-	char	*ptr;
-
-	i = 0;
-	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	ptr = c_malloc(ft_strlen(s1) + ft_strlen(s2) + 1, 1);
-	if (ptr == NULL)
-		return (NULL);
-	while (s1[i])
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		ptr[i + j] = s2[j];
-		j++;
-	}
-	ptr[i + j] = '\0';
-	return (ptr);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (!s)
-		return ;
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-	}
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (s1[i] == s2[i] && (s1[i] != '\0' || s2[i] != '\0'))
-	{
-		i++;
-	}
-	return (s1[i] - s2[i]);
-}
-
-char	*ft_strdup(char *s)
-{
-	int		i;
-	int		size;
-	char	*ptr;
-
-	i = 0;
-	size = ft_strlen(s);
-	ptr = c_malloc(size + 1, 1);
-	if (!ptr)
-		return (0);
-	while (s[i] != '\0')
-	{
-		ptr[i] = s[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return ((char *)ptr);
-}
 static int	ft_wordcounter(const char *str, char c)
 {
 	int	i;
@@ -154,85 +87,4 @@ char	**ft_split(char *s, char c)
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
-}
-
-int	isonly_spaces(char *input)
-{
-	int	i;
-
-	i = 0;
-	while (input && input[i])
-	{
-		while ((input[i] >= 9 && input[i] <= 13) || input[i] == ' ' )
-			i++;
-		if (input[i])
-			return (0);
-	}
-	return (1);
-}
-
-int sizeof_array(char **str)
-{
-	int i;
-
-	i = 0;
-	while(str && str[i])
-		i++;
-	return (i);
-}
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
-		i++;
-	if (i == n)
-		return (0);
-	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
-}
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
-}
-
-void map_lenght(t_data *data)
-{
-	int i;
-
-	i = 0;
-	while (data->map && data->map[i])
-		i++;
-	data->map_lenght = i;
-}
-
-void map_width(t_data *data)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (data->map && data->map[i])
-	{	
-		if (ft_strlen(data->map[i]) > j)
-			j = ft_strlen(data->map[i]);
-		i++;
-	}
-	data->map_width = j;
 }

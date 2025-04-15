@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kelmounj <kelmounj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cbajji <cbajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 21:25:32 by kelmounj          #+#    #+#             */
-/*   Updated: 2025/02/17 21:30:07 by kelmounj         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:38:16 by cbajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub.h"
 
-int    ft_destroy_win(t_data *data)
+void	ft_destroy_win(void *param)
 {
-    (void)data;
-    // mlx_destroy_cursor(data->mlx_ptr, data->mlx_win);
-    exit (0);
+	t_data	*data;
+
+	data = (t_data *)param;
+	c_malloc(0, 0);
+	mlx_close_window(data->mlx);
+	exit(0);
 }

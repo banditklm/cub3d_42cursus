@@ -81,6 +81,13 @@ Make sure to provide a valid `.cub` map file!
 - Enjoy the bonus features like animations and sound in the bonus version of the game!
 
 
+## Screenshots
+
+### First Look at the Game
+![Start screen](assets/game1.png)
+
+### shoot the target
+![Gameplay](assets/game2.png)
 
 
 

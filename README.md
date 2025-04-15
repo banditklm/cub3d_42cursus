@@ -43,13 +43,15 @@ Make sure to provide a valid `.cub` map file!
 Bonus Features
 The bonus version includes:
 
-A dynamic minimap
+✨ A dynamic minimap
 
-Mouse movement support
+✨ Mouse movement support
 
-Basic animations
+✨ Doors which can open and close
 
-Sound effects
+✨ Basic animations 
+
+✨ Sound effects
 
 5. To build the bonus version, run:
 ```bash
@@ -61,6 +63,22 @@ make bonus
 ```
 Make sure to provide a valid `.cub` map file!
 
+## How to Play
+
+- Use the keyboard to navigate through the 3D maze:
+
+  | Key   | Action          |
+  |-------|-----------------|
+  | `W`   | Move forward    |
+  | `S`   | Move backward   |
+  | `A`   | Move left       |
+  | `D`   | Move right      |
+  | `ESC` | Close the game  |
+  | `Space` | Trigger animation |
+  | `Enter` | Play sound        |
+
+- Look around and explore the maze using your keyboard.
+- Enjoy the bonus features like animations and sound in the bonus version of the game!
 
 
 

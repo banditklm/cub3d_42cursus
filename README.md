@@ -32,11 +32,7 @@ To build the project, run:
 ```bash
 make
 ```
-4. To build the bonus version, run:
-```bash
-make bonus
-```
-5. Running the Game
+4. Running the Game
 Once compiled, launch the game with:
 
 ```bash
@@ -54,3 +50,21 @@ Mouse movement support
 Basic animations
 
 Sound effects
+
+5. To build the bonus version, run:
+```bash
+make bonus
+```
+
+```bash
+./cub3D_Bonus [map_file.cub]
+```
+Make sure to provide a valid `.cub` map file!
+
+
+
+
+
+
+
+

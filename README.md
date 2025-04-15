@@ -1,4 +1,4 @@
-### 🕹️ cub3D
+# 🕹️ cub3D
 
 **cub3D** is a simple 3D game engine inspired by early raycasting games like Wolfenstein 3D, built as part of the 42 curriculum. It uses raycasting to render a 3D world from a 2D map.
 

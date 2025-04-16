@@ -86,8 +86,12 @@ Make sure to provide a valid `.cub` map file!
 ### First Look at the Game
 ![Start screen](assets/game1.png)
 
-### shoot the target
+### exploring the Game
 ![Gameplay](assets/game2.png)
+
+
+### Shoot the Target
+![Gameplay](assets/cub.gif)
 
 
 

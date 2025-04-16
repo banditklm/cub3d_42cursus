@@ -86,7 +86,7 @@ Make sure to provide a valid `.cub` map file!
 ### First Look at the Game
 ![Start screen](assets/game1.png)
 
-### exploring the Game
+### Exploring the Game
 ![Gameplay](assets/game2.png)
 
 

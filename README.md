@@ -73,6 +73,8 @@ Make sure to provide a valid `.cub` map file!
   | `S`   | Move backward   |
   | `A`   | Move left       |
   | `D`   | Move right      |
+  | `<=`  | Look left       |
+  | `=>`  | Look right      |
   | `ESC` | Close the game  |
   | `Space` | Trigger animation |
   | `Enter` | Play sound        |
